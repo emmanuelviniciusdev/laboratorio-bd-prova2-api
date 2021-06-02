@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+    database:
+        image: mysql:8
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'jogos_olimpicos'
+            MYSQL_PASSWORD: 'root'
+            MYSQL_ROOT_PASSWORD: 'root'
+        ports:
+            - 3306:3306
+        volumes:
+            - database_volume:/var/lib/mysql
+
+volumes:
+    database_volume:

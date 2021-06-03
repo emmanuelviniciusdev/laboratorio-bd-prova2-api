@@ -1,7 +1,8 @@
 const express = require('express')
+const cors = require('cors')
 const Esportes = require('./database/models/Esportes')
 
-const app = express().use(express.json())
+const app = express().use(express.json()).use(cors())
 
 app.post('/cadastrar-os-5-primeiros-esportes', async (req, res) => {
     try {
@@ -9,11 +10,11 @@ app.post('/cadastrar-os-5-primeiros-esportes', async (req, res) => {
          * Gera um array com os esportes.
          */
         const esportes = Array.from({ length: 5 }).map((_, index) => ({
-            modalidade: `Modalidade ${index + 1}`,
+            modalidade: `Modalidade ${index + 1} 🏀`,
             tipo: `Tipo ${index + 1}`,
-            distancia: index + 1 + 0.5,
+            distancia: index + 1.5,
             sexo: (index + 1) % 2 === 0 ? 'feminino' : 'masculino',
-            local: `Local ${index + 1}`,
+            local: (index + 1) % 2 === 0 ? 'Tóquio 🇯🇵' : 'Rio de Janeiro 🇧🇷',
         }))
 
         /**
